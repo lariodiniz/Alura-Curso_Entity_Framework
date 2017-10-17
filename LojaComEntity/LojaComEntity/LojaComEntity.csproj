@@ -106,17 +106,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriaDao.cs" />
     <Compile Include="EntidadesContext.cs" />
+    <Compile Include="Entidades\Categoria.cs" />
+    <Compile Include="Entidades\Produto.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="LojaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LojaDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ManipuladorDeUsuario.cs" />
+    <Compile Include="ProdutoDao.cs" />
+    <Compile Include="UsuarioDao.cs" />
     <Compile Include="Migrations\20171016145052_criaUsuario.cs" />
     <Compile Include="Migrations\20171016145052_criaUsuario.designer.cs">
       <DependentUpon>20171016145052_criaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20171017145521_criaProdutoCategoria.cs" />
+    <Compile Include="Migrations\20171017145521_criaProdutoCategoria.designer.cs">
+      <DependentUpon>20171017145521_criaProdutoCategoria.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\EntidadesContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />
