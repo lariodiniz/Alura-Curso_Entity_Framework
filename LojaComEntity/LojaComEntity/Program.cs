@@ -11,7 +11,7 @@ namespace LojaComEntity
     {
         static void Main(string[] args)
         {
-            /* Aula 01 */
+            /* Aula 01 
             EntidadesContext contexto = new EntidadesContext();
 
             Usuario renan = new Usuario()
@@ -25,7 +25,30 @@ namespace LojaComEntity
 
             Console.WriteLine("Salvou o usuário.");
             Console.ReadLine();
+            */
+            /* Aula 02 */
 
+            UsuarioDao dao = new UsuarioDao();
+
+            /*Usuario vitor = new Usuario()
+            {                
+                Nome = "Vitor",
+                Senha = "123"
+            };
+
+            dao.Salva(vitor);
+            Console.WriteLine("Salvou o usuário.");
+
+            vitor = dao.BuscarPorId(2);            
+            dao.Remove(vitor);
+            Console.WriteLine("Removeu o usuário.");
+            */
+            Usuario renan = dao.BuscarPorId(1);
+            renan.Nome = "Renan Sarges";
+
+            dao.SaveChanges();
+            
+            Console.ReadLine();
         }
     }
 }
