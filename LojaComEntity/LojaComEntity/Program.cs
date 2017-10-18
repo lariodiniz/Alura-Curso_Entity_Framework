@@ -50,7 +50,7 @@ namespace LojaComEntity
             dao.SaveChanges();
             */
 
-            /* Aula 03 */
+            /* Aula 03 
 
             EntidadesContext contexto = new EntidadesContext();
 
@@ -81,7 +81,7 @@ namespace LojaComEntity
             };*/
 
             /*Produto p = contexto.Produtos.Include(produto => produto.Categoria).FirstOrDefault(produto => produto.ID == 1);
-            Console.WriteLine("Nome do produto {0}", p.Categoria.Nome);*/
+            Console.WriteLine("Nome do produto {0}", p.Categoria.Nome);
 
             var categoria = contexto.Categorias.Include(c => c.Produtos).FirstOrDefault(c => c.ID == 1);
 
@@ -91,6 +91,74 @@ namespace LojaComEntity
             }
 
             Console.ReadLine();
+            */
+
+            /* Aula 04 
+
+            CategoriaDao daoCategoria = new CategoriaDao();
+
+            Categoria ca = new Categoria()
+            {
+                Nome = "Roupas"
+                
+            };
+
+            daoCategoria.Salva(ca);
+            Console.WriteLine("Salvou a categoria.");
+
+            ProdutoDao daoProduto = new ProdutoDao();
+
+            List<Produto> produtos = new List<Produto>();
+
+            produtos.Add(new Produto()
+                            {
+                            Nome = "agasalho",
+                            Preco = 50,
+                            Categoria = ca
+                            }                
+                        );
+
+            produtos.Add(new Produto()
+                            {
+                            Nome = "Camisa",
+                            Preco = 25,
+                            Categoria = ca
+                            }
+                        );
+
+            produtos.Add(new Produto()
+                            {
+                            Nome = "Moleton",
+                            Preco = 150,
+                            Categoria = ca
+                            }
+                        );
+
+            foreach (Produto item in produtos)
+            {
+                daoProduto.Salva(item);
+                Console.WriteLine("Salvou um item.");
+            }
+            */
+
+            EntidadesContext contexto = new EntidadesContext();
+
+            decimal precoMinimo = 40;
+
+            var busca = from p in contexto.Produtos
+                        where p.Categoria.Nome == "Roupas" && p.Preco > precoMinimo
+                        orderby p.Preco
+                        select p;
+
+            IList<Produto> resultado = busca.ToList();
+            
+            foreach (var produto in resultado)
+            {
+                Console.WriteLine(produto.Nome+" - "+ produto.Preco);
+            }
+
+            Console.ReadLine();
+            
         }
     }
 }
