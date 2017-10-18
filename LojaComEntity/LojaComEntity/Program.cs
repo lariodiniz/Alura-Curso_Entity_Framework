@@ -160,7 +160,7 @@ namespace LojaComEntity
             Console.ReadLine();
             */
 
-            /* Aula 05  */
+            /* Aula 05  
 
             EntidadesContext contexto = new EntidadesContext();
 
@@ -172,6 +172,49 @@ namespace LojaComEntity
             {
                 Console.WriteLine(p.Nome);
             }
+            Console.ReadLine();
+            */
+
+            /* Aula 06  */
+            EntidadesContext contexto = new EntidadesContext();
+
+            /*UsuarioDao dao = new UsuarioDao();
+            Usuario renan = dao.BuscarPorId(1);
+
+            Venda v = new Venda()
+            {
+                Cliente = renan
+            };
+
+            Produto p = new ProdutoDao().BuscarPorId(1);
+            Produto p2 = new ProdutoDao().BuscarPorId(2);
+
+            ProdutoVenda pv = new ProdutoVenda()
+            {
+                Venda = v,
+                Produto = p
+            };
+
+
+            ProdutoVenda pv2 = new ProdutoVenda()
+            {
+                Venda = v,
+                Produto = p2
+            };
+            contexto.ProdutoVenda.Add(pv);
+            contexto.ProdutoVenda.Add(pv2);
+
+            contexto.Vendas.Add(v);
+
+            contexto.SaveChanges();    */
+
+            Venda venda = contexto.Vendas.Include(v => v.ProdutoVenda).ThenInclude(pv => pv.Produto).FirstOrDefault(v => v.ID == 1);
+
+            foreach (var pv in venda.ProdutoVenda)
+            {
+                Console.WriteLine(pv.Produto.Nome);
+            }
+
             Console.ReadLine();
         }
     }
