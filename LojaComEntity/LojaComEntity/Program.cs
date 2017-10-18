@@ -175,10 +175,10 @@ namespace LojaComEntity
             Console.ReadLine();
             */
 
-            /* Aula 06  */
+            /* Aula 06  
             EntidadesContext contexto = new EntidadesContext();
 
-            /*UsuarioDao dao = new UsuarioDao();
+            UsuarioDao dao = new UsuarioDao();
             Usuario renan = dao.BuscarPorId(1);
 
             Venda v = new Venda()
@@ -206,7 +206,7 @@ namespace LojaComEntity
 
             contexto.Vendas.Add(v);
 
-            contexto.SaveChanges();    */
+            contexto.SaveChanges();    
 
             Venda venda = contexto.Vendas.Include(v => v.ProdutoVenda).ThenInclude(pv => pv.Produto).FirstOrDefault(v => v.ID == 1);
 
@@ -216,6 +216,33 @@ namespace LojaComEntity
             }
 
             Console.ReadLine();
+
+            */
+
+            /* Aula 07  */
+            EntidadesContext contexto = new EntidadesContext();
+
+            PessoaFisica pf = new PessoaFisica()
+            {
+                Nome = "Guilherme",
+                CPF = "123456",
+                Senha = "123"
+            };
+
+            contexto.PessoasFisica.Add(pf);
+
+
+            PessoaJuridica pj = new PessoaJuridica()
+            {
+                Nome = "Alura",
+                CNPJ = "789",
+                Senha = "132"
+            };
+
+            contexto.PessoasJuridica.Add(pj);
+
+            Console.ReadLine();
+
         }
     }
 }

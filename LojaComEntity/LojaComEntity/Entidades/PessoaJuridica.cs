@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace LojaComEntity.Entidades
 {
-    public abstract class Usuario
+    public class PessoaJuridica: Usuario
     {
-        public int ID { get; set; }
-        public string Nome { get; set; }
-        public string Senha { get; set; }
+        public string CNPJ { get; set; }
     }
 }
