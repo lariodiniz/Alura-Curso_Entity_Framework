@@ -7,13 +7,36 @@ using System.Threading.Tasks;
 
 namespace LojaComEntity
 {
-    class ProdutoDao
+    public class ProdutoDao
     {
         private EntidadesContext contexto;
 
         public ProdutoDao()
         {
             contexto = new EntidadesContext();
+        }
+
+        public IList<Produto> BuscaPorNomePrecoNome(string nome, decimal preco, string nomeCategoria)
+        {
+            var busca = from p in contexto.Produtos
+                        select p;
+
+            if (!String.IsNullOrEmpty(nome))
+            {
+                busca = busca.Where(p => p.Nome == nome);
+            }
+
+            if (preco > 0.0m)
+            {
+                busca = busca.Where(p => p.Preco == preco);
+            }
+
+            if (!String.IsNullOrEmpty(nomeCategoria))
+            {
+                busca = busca.Where(p => p.Categoria.Nome == nomeCategoria);
+            }
+
+            return busca.ToList();
         }
 
         public void Salva(Produto produto)

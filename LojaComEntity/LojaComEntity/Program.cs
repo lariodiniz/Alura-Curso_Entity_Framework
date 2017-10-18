@@ -139,7 +139,7 @@ namespace LojaComEntity
                 daoProduto.Salva(item);
                 Console.WriteLine("Salvou um item.");
             }
-            */
+            
 
             EntidadesContext contexto = new EntidadesContext();
 
@@ -158,7 +158,21 @@ namespace LojaComEntity
             }
 
             Console.ReadLine();
-            
+            */
+
+            /* Aula 05  */
+
+            EntidadesContext contexto = new EntidadesContext();
+
+            ProdutoDao dao = new ProdutoDao();
+
+            var resultado = dao.BuscaPorNomePrecoNome(null, 20, "informatica");
+
+            foreach (var p in resultado)
+            {
+                Console.WriteLine(p.Nome);
+            }
+            Console.ReadLine();
         }
     }
 }
